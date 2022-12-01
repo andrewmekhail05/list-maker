@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
+    <title>To Do List</title>
+    <style>
+        body{
+            background-image: linear-gradient(to right, rgb(84, 84, 84), rgb(33, 34, 34));
+        }
+        #masterList{
+            font-size:20px;
+            font-size:50px;
+            padding-left: 25px;
+            padding-right: 25px;
+            padding-top:10px;
+            padding-bottom:10px;
+        }
+        #header{
+            font-family: 'Righteous', cursive;
+            font-size:40px;
+            text-align:center;
+            text-shadow: 1.5px 1.5px white;
+            background-image: radial-gradient(rgb(154, 6, 6), rgb(255, 106, 0));
+            padding-left: 15px;
+            border: 5px solid black;
+        }
+        ul{
+            font-size:40px;
+            text-align:center;
+            background-image:linear-gradient(to right, rgb(212, 65, 65),rgb(127, 96, 218));
+            padding-left: 15px;
+            border: 5px solid black; 
+            list-style-type:none;
+            position: relative;
+        }
+        li{
+            border: 2px solid black;
+            font-family: 'Comfortaa', cursive;
+            position: relative;
+            text-shadow: 1.5px 1.5px white;
+        }
+        #label1{
+            font-family: 'Comfortaa', cursive;
+        }
+        .count button{
+            position: absolute;
+            left: 0px;
+        }
+    </style>
+</head>
+<body>
+    <label for="additem" id="label1">Add Item:</label>
+    <input type="text" id="usertext" name="texts">
+
+    <input type="submit" id="clicker" onclick="myFunction()" value="add to list">
+
+    <div id="masterList">
+        <h1 id="header">To-Do List</h1>
+            <ul id="list">
+            
+            </ul>
+    </div>
+
+    <script>
+        function myFunction(){
+            var COUNT = document.querySelectorAll(".count")
+            var x = document.getElementById("usertext").value;
+            var newElement = document.createElement('li');
+            newElement.className = "count"
+            var newText = document.createTextNode(x)
+            newElement.appendChild(newText);
+            newElement.setAttribute("id", "NOTE"+COUNT.length);
+            var BUTTON = document.createElement("button");
+            BUTTON.innerHTML = "X";
+            newElement.appendChild(BUTTON)
+            BUTTON.setAttribute("onclick","REMOVENOTE("+COUNT.length+")")
+            var positions = document.getElementsByTagName('ul')[0]
+            positions.appendChild(newElement);
+        }
+        function REMOVENOTE(A){
+            document.getElementById("NOTE"+A).remove()
+        }
+    </script>
+</body>
+</html>
